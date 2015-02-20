@@ -9,7 +9,8 @@ var bootstrap = require('./bootstrap');
 test('Ok', function (t) {
   var app = bootstrap(lib({
     attrs: {
-      isUser: 'boolean'
+      isUser: 'boolean',
+      image: 'dataUri'
     }
   }));
 
@@ -22,7 +23,13 @@ test('Ok', function (t) {
     .expect(200)
     .end(function (err, res) {
       t.error(err, 'No error');
-      t.same(res.body, { test: { isUser: true, name: 'Tobi' } }, 'Body correct');
+      t.same(res.body, {
+        test: {
+          isUser: true,
+          name: 'Tobi',
+          image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAURJREFUKBV9UktqhEAQ9RMRBz879QIJBJcJQcRjzBVm5SW8hKtcYY4hIiFZipBcQN35SUSMmnoyQs8Mk15od9V7VV3vNc9drCiKHpdleeB5/on+H/T/DIIgZ2H8dgjD8M627VdBEPaapk26ritN0/Rt24rzPB+LoggI8wP8SqLDzrKsb1mWJ9d1RSJutTgicHme91VVKWVZSoT9XbPUITJNs/c874wAJgo4jqOgIG6CGI8ZJEl6831fZTsgyS50jOO4G8fxRaBB71VVnf4jgIw8ZoVIAn2eDcNQ2Kq39hAHqqLTe13X/S0gG4easAGdvrqug6xs/mqPPOSHbwKMo8AxTdPpCskEIDtwwK+Sk3GHYRjELMuQYKDc6lOSJBN8gsFIsi9iB79IpT3UhDiY9XR1vIgDjD0jbeXhG2yAqhAJM1++vT94DrZKppaKPgAAAABJRU5ErkJggg=='
+        }
+      }, 'Body correct');
       t.end();
     });
 });

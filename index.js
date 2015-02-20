@@ -28,24 +28,27 @@ module.exports = function (options) {
         var match = fieldKey.match(/(\w+)\[(\w+)\]$/);
         var type = options.attrs[match[2]];
         var root = match[1];
+        var outputAttr = type && type.outputAttr ? type.outputAttr : match[2];
 
         if (!req.body[root]) {
           req.body[root] = {};
         }
 
-        req.body[root][match[2]] = coerceAttr(fields[fieldKey], type);
+        req.body[root][outputAttr] = coerceAttr(fields[fieldKey], type);
       });
 
       fileKeys.forEach(function (fileKey) {
         var match = fileKey.match(/(\w+)\[(\w+)\]$/);
         var file = files[fileKey][0];
         var type = options.attrs[match[2]];
+        var root = match[1];
+        var outputAttr = type && type.outputAttr ? type.outputAttr : match[2];
 
-        if (!req.body[options.root] && options.root === match[1]) {
-          req.body[options.root] = {};
+        if (!req.body[root]) {
+          req.body[root] = {};
         }
 
-        req.body[options.root][type.outputAttr || match[2]] = coerceAttr(file, type);
+        req.body[root][outputAttr] = coerceAttr(file, type);
       });
 
       next();
@@ -56,7 +59,7 @@ module.exports = function (options) {
 function coerceAttr(attr, typeData) {
   var type = typeof typeData === 'object' ? type.type : typeData;
 
-  attr = attr[0];
+  attr = Array.isArray(attr) ? attr[0] : attr;
 
   if (!attr) {
     return attr;
