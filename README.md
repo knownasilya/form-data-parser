@@ -6,6 +6,7 @@ Middleware for connect or express that parses FormData in a sane way, no streams
 _Note: Originally made to work with the [ember-cli-form-data](https://github.com/funtusov/ember-cli-form-data/) addon._
 
 [![Build Status][travis-badge]][travis-badge-url]
+[![Coverage Status][coveralls-badge]][coveralls-badge-url]
 
 ## Usage
 
@@ -41,3 +42,5 @@ app.post('/api/blog-post', fdp, function (req, res) {
 
 [travis-badge]: https://travis-ci.org/knownasilya/form-data-parser.svg
 [travis-badge-url]: https://travis-ci.org/knownasilya/form-data-parser
+[coveralls-badge]: https://coveralls.io/repos/knownasilya/form-data-parser/badge.svg
+[coveralls-badge-url]: https://coveralls.io/r/knownasilya/form-data-parser
