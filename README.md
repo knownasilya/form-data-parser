@@ -5,6 +5,8 @@ Middleware for connect or express that parses FormData in a sane way, no streams
 
 _Note: Originally made to work with the [ember-cli-form-data](https://github.com/funtusov/ember-cli-form-data/) addon._
 
+[![Build Status][travis-badge]][travis-badge-url]
+
 ## Usage
 
 ```no-highlight
@@ -36,3 +38,6 @@ app.post('/api/blog-post', fdp, function (req, res) {
   // req.body => { blogPost: comments: [1, 2], coverPhoto: 'data: image/png; base64, dasfe254....' }
 });
 ```
+
+[travis-badge]: https://travis-ci.org/knownasilya/form-data-parser.svg
+[travis-badge-url]: https://travis-ci.org/knownasilya/form-data-parser
