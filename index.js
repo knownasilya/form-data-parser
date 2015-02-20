@@ -57,7 +57,7 @@ module.exports = function (options) {
 };
 
 function coerceAttr(attr, typeData) {
-  var type = typeof typeData === 'object' ? type.type : typeData;
+  var type = typeof typeData === 'object' ? typeData.type : typeData;
 
   attr = Array.isArray(attr) ? attr[0] : attr;
 
