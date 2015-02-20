@@ -4,7 +4,8 @@ var fs = require('fs');
 var multiparty = require('multiparty');
 
 /**
- * Options (optional)
+ * Options
+ * - root: (string) type of model, singular or plural
  * - attrs: (obj) name to type
  */
 module.exports = function (options) {
@@ -12,8 +13,16 @@ module.exports = function (options) {
     var form = new multiparty.Form();
 
     form.parse(req, function(err, fields, files) {
+      if (!fields || !files) {
+        return next('Request is probably not FormData');
+      }
+
       var fieldKeys = Object.keys(fields);
       var fileKeys = Object.keys(files);
+
+      if (!req.body) {
+        req.body = {};
+      }
 
       fieldKeys.forEach(function (fieldKey) {
         var match = fieldKey.match(/(\w+)\[(\w+)\]$/);
@@ -31,13 +40,17 @@ module.exports = function (options) {
         var match = fileKey.match(/(\w+)\[(\w+)\]$/);
         var file = files[fileKey][0];
         var type = options.attrs[match[2]];
-        var root = match[1];
 
-        if (!req.body[root]) {
-          req.body[root] = {};
+        if (!req.body[options.root] && options.root === match[1]) {
+          req.body[options.root] = {};
         }
 
-        req.body[root][type.outputAttr || match[2]] = coerceAttr(file, type);
+        if (type.type === 'dataUri') {
+          req.body[options.root][type.outputAttr || match[2]] = coerceAttr(file, type);
+        }
+        else if (type.type === 'fileUrl') {
+          // TODO: move file and rename it if specified
+        }
       });
 
       next();
@@ -46,7 +59,7 @@ module.exports = function (options) {
 };
 
 function coerceAttr(attr, typeData) {
-  var type = typeof typeData === 'object' ? type.type : type;
+  var type = typeof typeData === 'object' ? type.type : typeData;
 
   attr = attr[0];
 

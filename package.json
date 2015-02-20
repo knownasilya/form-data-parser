@@ -4,7 +4,7 @@
   "description": "Middleware that parses FormData requests and places them on req.body",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test | tap-spec"
   },
   "keywords": [
     "middleware",
@@ -22,5 +22,12 @@
   "license": "ISC",
   "dependencies": {
     "multiparty": "^4.1.1"
+  },
+  "devDependencies": {
+    "express": "^4.11.2",
+    "morgan": "^1.5.1",
+    "supertest": "^0.15.0",
+    "tap-spec": "^2.2.1",
+    "tape": "^3.5.0"
   }
 }
