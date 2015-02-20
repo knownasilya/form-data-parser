@@ -1,5 +1,6 @@
 'use strict';
 
+var path = require('path');
 var test = require('tape');
 var request = require('supertest');
 var lib = require('../');
@@ -16,6 +17,7 @@ test('Ok', function (t) {
     .post('/')
     .field('test[name]', 'Tobi')
     .field('test[isUser]', 'true')
+    .attach('test[image]', path.join(__dirname, 'assets/images/test_png.png'))
     .type('form')
     .expect(200)
     .end(function (err, res) {

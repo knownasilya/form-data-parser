@@ -45,12 +45,7 @@ module.exports = function (options) {
           req.body[options.root] = {};
         }
 
-        if (type.type === 'dataUri') {
-          req.body[options.root][type.outputAttr || match[2]] = coerceAttr(file, type);
-        }
-        else if (type.type === 'fileUrl') {
-          // TODO: move file and rename it if specified
-        }
+        req.body[options.root][type.outputAttr || match[2]] = coerceAttr(file, type);
       });
 
       next();
