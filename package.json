@@ -15,6 +15,10 @@
     "connect"
   ],
   "author": "Ilya Radchenko <ilya@burstcreations.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:knownasilya/form-data-parser.git"
+  },
   "license": "ISC",
   "dependencies": {
     "multiparty": "^4.1.1"
