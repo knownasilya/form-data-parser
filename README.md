@@ -43,4 +43,4 @@ app.post('/api/blog-post', fdp, function (req, res) {
 [travis-badge]: https://travis-ci.org/knownasilya/form-data-parser.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/knownasilya/form-data-parser
 [coveralls-badge]: https://coveralls.io/repos/knownasilya/form-data-parser/badge.svg?branch=master
-[coveralls-badge-url]: https://coveralls.io/r/knownasilya/form-data-parser
+[coveralls-badge-url]: https://coveralls.io/r/knownasilya/form-data-parser?branch=master
