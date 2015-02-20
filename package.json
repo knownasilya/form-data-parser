@@ -1,6 +1,6 @@
 {
   "name": "form-data-parser",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Middleware that parses FormData requests and places them on req.body",
   "main": "index.js",
   "scripts": {
