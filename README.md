@@ -3,7 +3,7 @@ form-data-parser
 
 Middleware for connect or express that parses FormData in a sane way, no streams necessary.
 
-_Note: Originall made to work with the [ember-cli-form-data](https://github.com/funtusov/ember-cli-form-data/) addon._
+_Note: Originally made to work with the [ember-cli-form-data](https://github.com/funtusov/ember-cli-form-data/) addon._
 
 ## Usage
 
