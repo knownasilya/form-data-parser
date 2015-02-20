@@ -1,0 +1,22 @@
+{
+  "name": "form-data-parser",
+  "version": "0.1.0",
+  "description": "Middleware that parses FormData requests and places them on req.body",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "middleware",
+    "form",
+    "data",
+    "parse",
+    "express",
+    "connect"
+  ],
+  "author": "Ilya Radchenko <ilya@burstcreations.com>",
+  "license": "ISC",
+  "dependencies": {
+    "multiparty": "^4.1.1"
+  }
+}
