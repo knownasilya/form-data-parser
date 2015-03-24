@@ -41,6 +41,15 @@ app.post('/api/blog-post', fdp, function (req, res) {
 });
 ```
 
+### Available Types
+
+* array
+* boolean
+* number
+* dataUri
+
+The default value is a string, so you don't have to specify anything for strings.
+
 [travis-badge]: https://travis-ci.org/knownasilya/form-data-parser.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/knownasilya/form-data-parser
 [coveralls-badge]: https://coveralls.io/repos/knownasilya/form-data-parser/badge.svg?branch=master
